@@ -1,0 +1,10 @@
+{
+    "instanceName": "minhainstancia",
+    "token": "",
+    "qrcode": true,
+    "number": "5518998121995",
+    "integration": "WHATSAPP-BAILEYS",
+    "groups_ignore": true,
+    "always_online": true,
+    "read_messages": true
+}
