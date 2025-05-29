@@ -72,3 +72,13 @@ services:
       - ./src/:/app
     env_file: .env
     restart: always
+
+  consumer:
+    build: ./src/consumer
+    container_name: consumer_whatsappsenderserver
+    depends_on:
+      - api_whatsappsenderserver
+    env_file: .env
+    environment:
+      API_KEY: ${API_KEY}
+    restart: always

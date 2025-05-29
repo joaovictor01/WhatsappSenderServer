@@ -1,4 +1,5 @@
 import os
+import json
 from kafka import KafkaConsumer
 from loguru import logger
 from whatsappsender import send_message
@@ -24,7 +25,7 @@ for message in consumer:
         key={message.key} value={message.value}
     """
     )
-    content = message.value
+    content = json.loads(message.value.decode("utf-8"))
     t = threading.Thread(
         target=send_message,
         args=(
