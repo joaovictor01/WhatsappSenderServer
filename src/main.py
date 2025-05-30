@@ -1,9 +1,7 @@
-from contextlib import asynccontextmanager
 import json
 import random
 
-import qrcode
-from apscheduler.schedulers.background import BackgroundScheduler
+# import qrcode
 from fastapi import Body, Depends, FastAPI, HTTPException, status
 from loguru import logger
 
@@ -11,30 +9,13 @@ from auth_handler import JWTBearer, decode_jwt, sign_jwt
 from controller import (
     get_user,
     insert_user,
-    insert_whatsapp_message,
-    get_whatsapp_messages_to_sent,
 )
 from models import UserLoginSchema, UserSchema, WhatsappMessage
-from security import decrypt, encrypt, hash_password, verify_password
-from whatsappsender import create_instance
+from security import hash_password, verify_password
 from producer import kafka_producer
-
-# scheduler = BackgroundScheduler()
-# scheduler.add_job(get_and_update_prices, "interval", hours=1)
-# scheduler.start()
-
-# # Populando o banco de dados com os preços atuais
-# get_and_update_prices()
 
 
 app = FastAPI()
-
-
-# Ensure the scheduler shuts down properly when application exit.
-# @asynccontextmanager
-# async def lifespan(app: FastAPI):
-#     yield
-#     scheduler.shutdown()
 
 
 @app.post("/user/signup", tags=["user"])
@@ -96,7 +77,6 @@ async def whatsappsender_login(user: UserLoginSchema = Body(...)):
 )
 async def send_message(message: WhatsappMessage = Body(...)):
     logger.info("Sending message...")
-    # TODO: Implementar envio de mensagem via whatsapp
     kafka_producer.send(
         topic="messages",
         key=f"{random.randrange(999)}".encode(),

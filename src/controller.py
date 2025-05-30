@@ -1,5 +1,6 @@
 import os
-from datetime import datetime
+
+# from datetime import datetime
 
 import pymongo
 from loguru import logger
@@ -17,7 +18,7 @@ mongo_connection_str = os.environ.get(
 
 def get_db():
     client = pymongo.MongoClient(mongo_connection_str)
-    db = client["db_api_coinos"]
+    db = client["db_api_wppsenderserver"]
     return db
 
 
