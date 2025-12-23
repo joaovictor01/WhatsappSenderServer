@@ -1,7 +1,4 @@
 import os
-
-# from datetime import datetime
-
 import pymongo
 from loguru import logger
 
@@ -40,7 +37,7 @@ def insert_whatsapp_message(whatsapp_message: dict):
     whatsapp_messages.insert_one(whatsapp_message)
 
 
-def get_whatsapp_messages_to_sent():
+def get_whatsapp_messages_to_send():
     db = get_db()
     whatsapp_messages = db["whatsapp_messages"]
     return whatsapp_messages.find({"sent": False})
