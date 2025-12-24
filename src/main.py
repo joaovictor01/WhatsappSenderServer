@@ -39,7 +39,6 @@ async def create_user(user: UserSchema = Body(...)):
 def check_user(data: UserLoginSchema):
     """Verifica as credenciais e se o usuário tem permissão pra utilizar esta API."""
     logger.info("Checking user credentials...")
-    print(f"Data: {data}")
     user = get_user(data.email)
     if not user:
         logger.error("Dados de login incorretos.")

@@ -9,7 +9,7 @@ EVOLUTION_API_BASE_URL = os.environ.get("EVOLUTION_URL", "evolution-api")
 
 def create_instance(phone_number: str):
     payload = {
-        "instanceName": "minhainstancia",
+        "instanceName": phone_number,
         "token": "",
         "qrcode": True,
         "number": phone_number,
