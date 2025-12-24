@@ -2,3 +2,5 @@
 mongo_data/
 *.log
 todo.md
+.env
+evolution_instances/
