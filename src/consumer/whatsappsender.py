@@ -23,7 +23,7 @@ def create_instance(phone_number: str):
 
 def send_message(instance: str, phone_number: str, message: str):
     payload = {"number": phone_number, "text": message}
-    headers = {"apikey": os.environ.get("API_KEY")}
+    headers = {"apikey": os.environ.get("AUTHENTICATION_API_KEY")}
     response = requests.post(
         f"{EVOLUTION_API_BASE_URL}/message/sendText/{instance}",
         json=payload,
@@ -34,4 +34,5 @@ def send_message(instance: str, phone_number: str, message: str):
         return response.json()
 
     logger.error("Failed to send message.")
+    logger.error(response.content)
     return None
