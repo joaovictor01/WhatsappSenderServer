@@ -4,3 +4,4 @@ mongo_data/
 todo.md
 .env
 evolution_instances/
+.backup/

@@ -139,20 +139,6 @@ services:
       API_KEY: ${API_KEY}
     restart: always
 
-  # webhook:
-  #   build: ./src/webhook
-  #   container_name: webhook_whatsappsenderserver
-  #   depends_on:
-  #     - kafka
-  #     - mongo
-  #     - consumer
-  #   ports:
-  #     - 9000:9000
-  #   volumes:
-  #     - ./src/webhook/:/app
-  #   env_file: .env
-  #   restart: always
-
 volumes:
   postgres_data:
   redis-data:
